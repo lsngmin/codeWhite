@@ -1,16 +1,16 @@
 import os
 def get_p(current_path=None) :
-    path_lc = "/started/"
-    path_sv = "/home/started/ultralytics/started1/"
+    path_lc = "/Users/smin/Desktop/ultralytics/started/"
+    path_sv = "/home/codeWhite/ultralytics/started/"
     if current_path is None:
         path_g = path_lc if str(os.getcwd())[1] == 'U' else path_sv
         return path_g
     elif current_path == "ti":
-        return "/home/started/ultralytics/datasets/train/images"
+        return "/home/codeWhite/ultralytics/datasets/train/images"
     elif current_path == "tl":
-        return "/home/started/ultralytics/datasets/train/labels"
+        return "/home/codeWhite/ultralytics/datasets/train/labels"
     elif current_path == "datasets":
-        return "/home/started/ultralytics/datasets/"
+        return "/home/codeWhite/ultralytics/datasets/"
     else:
         path_g = path_lc if str(os.getcwd())[1] == 'U' else path_sv
         finally_path = path_g + current_path
