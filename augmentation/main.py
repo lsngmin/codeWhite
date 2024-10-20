@@ -1,6 +1,6 @@
 # 클래스 별로 이미지 분류
 # 클래스 별 이미지 수량 출력
-from started.augmentation import classificationImage as cf
+import classificationImage as cf
 
 cf.start()
 
