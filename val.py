@@ -11,6 +11,13 @@ model = YOLO(model_filename)
 
 data = path_g + "tld_2024.yaml"
 
-metrics = model.val(data=data, batch=22, imgsz=1280, device="0,1")
+metrics = model.val(
+    data=data,
+    batch=22,
+    imgsz=1280,
+    device="0,1",
+    workers="48",
+    max_batches=None,
+    verbose=True)
 # metrics.box.map  # map50-95
 # metrics.box.map50  # map50
