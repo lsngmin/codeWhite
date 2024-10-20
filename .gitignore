@@ -1,0 +1,5 @@
+*.pt
+__pycache__
+.ipynb_checkpoints
+trainModel
+log

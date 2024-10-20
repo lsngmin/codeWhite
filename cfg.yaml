@@ -1,0 +1,72 @@
+# Ultralytics YOLO 🚀, GPL-3.0 license
+# Default training settings and hyperparameters for medium-augmentation COCO training
+
+task: detect  # inference task, i.e. detect, segment, classify
+mode: train  # YOLO mode, i.e. train, val, predict, export
+
+#Train settings -------------------------------------------------------------------------------------------------------
+model: /home/codeWhite/ultralytics/started/best.pt # path to model file, i.e. yolov8n.pt, yolov8n.yaml
+data: /home/codeWhite/ultralytics/started/tld_2024.yaml # path to data file, i.e. coco128.yaml
+epochs: 50  # number of epochs to train for
+patience: 3  # epochs to wait for no observable improvement for early stopping of training
+batch: 22
+#autoanchor: True
+imgsz: 1280  # size of input images as integer or w,h
+save: True  # save train checkpoints and predict results
+save_period: -1 # Save checkpoint every x epochs (disabled if < 1)
+cache: disk  # True/ram, disk or False. Use cache for data loading
+device: 0,1 # device to run on, i.e. cuda device=0 or device=0,1,2,3 or device=cpu
+workers: 48  # number of worker threads for data loading (per RANK if DDP)
+project: /home/codeWhite/ultralytics/started/trainModel/ # project name
+name: tld_detection2 # experiment name
+exist_ok: True  # whether to overwrite existing experiment
+pretrained: True  # whether to use a pretrained model
+optimizer: AdamW  # optimizer to use, choices=['SGD', 'Adam', 'AdamW', 'RMSProp']
+verbose: True  # whether to print verbose output
+seed: 0  # random seed for reproducibility
+deterministic: True  # whether to enable deterministic mode
+single_cls: False  # train multi-class data as single-class
+#image_weights: False  # use weighted image selection for training
+rect: False  # support rectangular training if mode='train', support rectangular evaluation if mode='val'
+cos_lr: False  # use cosine learning rate scheduler
+close_mosaic: 0  # disable mosaic augmentation for final 10 epochs
+resume: False  # resume training from last checkpoint
+# Val/Test settings ----------------------------------------------------------------------------------------------------
+val: True  
+split: val  
+save_json: False 
+conf: 0.69  
+iou: 0.65  
+max_det: 15  
+half: False  
+# Export settings ------------------------------------------------------------------------------------------------------
+format: torchscript  # format to export to
+workspace: 4  # TensorRT: workspace size (GB)
+# Hyperparameters ------------------------------------------------------------------------------------------------------
+lr0: 0.001 
+lrf: 0.0085  
+momentum: 0.937 
+weight_decay: 0.0005  # optimizer weight decay 5e-4
+warmup_epochs: 10.0  # warmup epochs (fractions ok)
+warmup_momentum: 0.9  # warmup initial momentum
+warmup_bias_lr: 0.1  # warmup initial bias lr
+box: 8.0 # box loss gain
+cls: 1.3
+dfl: 1.5  # dfl loss gain
+label_smoothing: 0.06  # label smoothing (fraction)
+nbs: 64  # nominal batch size
+hsv_h: 0.03  # image HSV-Hue augmentation (fraction)
+hsv_s: 0.7  # image HSV-Saturation augmentation (fraction)
+hsv_v: 0.5
+translate: 0.3 # image translation (+/- fraction)
+scale: 0.8 # image scale (+/- gain)
+shear: 0.1  # image shear (+/- deg)
+perspective: 0.1 # image perspective (+/- fraction), range 0-0.001
+#flipud: 0.0  # image flip up-down (probability)
+#fliplr: 0.5  # image flip left-right (probability)
+mosaic: 0.8  # image mosaic (probability)
+mixup: 0.38  # image mixup (probability)
+copy_paste: 0.2  # segment copy-paste (probability)
+augment: True
+# Tracker settings ------------------------------------------------------------------------------------------------------
+tracker: botsort.yaml  # tracker type, ['botsort.yaml', 'bytetrack.yaml']
