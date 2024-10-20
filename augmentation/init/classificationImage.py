@@ -1,6 +1,6 @@
 import os
 import shutil
-from codeWhite.utils import setPath as p
+from started.utils import setPath as p
 def start() :
     # 이미지 및 라벨 경로 설정
     image_dir = p.get_p("ti")
