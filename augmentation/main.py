@@ -4,7 +4,7 @@ from started.augmentation import classificationImage as cf
 
 cf.start()
 
-# 해당 클래스의 이미지 증강 3번345
+# 해당 클래스의 이미지 증강 3번345dd
 from started.augmentation.clsimageaug import class13aug as c13
 for i in range(0,3):
     c13.start()
