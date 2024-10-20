@@ -17,7 +17,6 @@ metrics = model.val(
     imgsz=1280,
     device="0,1",
     workers="48",
-    max_batches=None,
     verbose=True)
 # metrics.box.map  # map50-95
 # metrics.box.map50  # map50
