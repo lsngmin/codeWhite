@@ -1,15 +1,11 @@
 from ultralytics import YOLO
 import os
+from utils import setPath as p
 
-os.environ["NCCL_P2P_DISABLE"] = "1" 
+os.environ["NCCL_P2P_DISABLE"] = "1"
 
-path_lc = "/Users/smin/Desktop/ultralytics/codeWhite/"
-path_sv =  "/home/codeWhite/ultralytics/started/"
-path_g = path_lc if str(os.getcwd())[1] == 'U' else path_sv
-model_filename = path_g + "trainModel/tld_detection/weights/best.pt"
-model = YOLO(model_filename)
-
-data = path_g + "tld_2024.yaml"
+model = YOLO(p.get_p("trainModel/tld_detection/weights/best.pt"))
+data = p.get_p()+ "/commons/tld_2024.yaml"
 
 metrics = model.val(
     data=data,

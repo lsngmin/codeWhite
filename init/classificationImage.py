@@ -1,14 +1,13 @@
 import os
 import shutil
-
-def image_classification() :
+from codeWhite.utils import setPath as p
+def start() :
     # 이미지 및 라벨 경로 설정
-    image_dir = '/home/codeWhite/ultralytics/datasets/train/images'  # 원본 이미지 경로
-    label_dir = '/home/codeWhite/ultralytics/datasets/train/labels'  # 원본 라벨 경로
-    output_base_dir = '/home/codeWhite/ultralytics/datasets/train_class'  # 결과 이미지를 저장할 경로
+    image_dir = p.get_p("ti")
+    label_dir = p.get_p("tl")
 
-    # 저장할 폴더가 없으면 생성
-    os.makedirs(output_base_dir, exist_ok=True)
+    output_dir = p.get_p("datasets") + "train_class"
+    os.makedirs(output_dir, exist_ok=True)
 
     # 이미지 및 라벨 파일 분류 및 클래스별 저장
     for img_file in os.listdir(image_dir):
@@ -26,8 +25,8 @@ def image_classification() :
                         class_name = f'class_{class_id}'
 
                         # 클래스별 폴더 설정
-                        class_image_output_dir = os.path.join(output_base_dir, class_name, 'images')
-                        class_label_output_dir = os.path.join(output_base_dir, class_name, 'labels')
+                        class_image_output_dir = os.path.join(output_dir, class_name, 'images')
+                        class_label_output_dir = os.path.join(output_dir, class_name, 'labels')
 
                         # 클래스별 폴더가 없으면 생성
                         os.makedirs(class_image_output_dir, exist_ok=True)
@@ -47,13 +46,11 @@ def image_classification() :
     print('Images and labels have been classified and saved by class.')
 
     total_images = 0
-    for class_folder in os.listdir(output_base_dir):
-        class_image_dir = os.path.join(output_base_dir, class_folder, 'images')
+    for class_folder in os.listdir(output_dir):
+        class_image_dir = os.path.join(output_dir, class_folder, 'images')
         if os.path.isdir(class_image_dir):
             num_images = len([name for name in os.listdir(class_image_dir) if name.endswith('.jpg') or name.endswith('.png')])
             total_images += num_images
             print(f'Class {class_folder} contains {num_images} images.')
 
     print(f'Total number of images: {total_images}')
-
-image_classification()

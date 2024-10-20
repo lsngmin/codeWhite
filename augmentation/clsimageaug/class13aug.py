@@ -22,7 +22,7 @@ def get_augmentation_pipeline():
 
 
 # 증강을 적용하는 함수
-def augment_images_and_labels(input_image_folder, input_label_folder):
+def start(input_image_folder, input_label_folder):
     # 증강 파이프라인 생성
     random.seed()
     augmentations = get_augmentation_pipeline()
