@@ -1,10 +1,10 @@
 task: detect
 mode: train
 
-model: /home/codeWhite/ultralytics/started/best.pt
-data: /home/codeWhite/ultralytics/started/tld_2024.yaml
+model: /home/started/ultralytics/started1/best.pt
+data: /home/started/ultralytics/started1/tld_2024.yaml
 
-project: /home/codeWhite/ultralytics/started/trainModel/
+project: /home/started/ultralytics/started1/trainModel/
 name: tld_detection2
 
 epochs: 50

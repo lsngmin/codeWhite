@@ -5,10 +5,10 @@ from collections import defaultdict
 from tqdm import tqdm  # tqdm 라이브러리 임포트
 
 def sampling_FromTrainDataSet__():
-    image_dir = r'/home/codeWhite/ultralytics/datasets/train/images'  # 훈련 이미지 경로
-    label_dir = r'/home/codeWhite/ultralytics/datasets/train/labels'  # 훈련 라벨 경로
-    output_image_dir = r'/home/codeWhite/ultralytics/datasets/val/images'  # 샘플링된 검증 이미지 저장 경로
-    output_label_dir = r'/home/codeWhite/ultralytics/datasets/val/labels'  # 샘플링된 검증 라벨 저장 경로
+    image_dir = r'/home/started/ultralytics/datasets/train/images'  # 훈련 이미지 경로
+    label_dir = r'/home/started/ultralytics/datasets/train/labels'  # 훈련 라벨 경로
+    output_image_dir = r'/home/started/ultralytics/datasets/val/images'  # 샘플링된 검증 이미지 저장 경로
+    output_label_dir = r'/home/started/ultralytics/datasets/val/labels'  # 샘플링된 검증 라벨 저장 경로
     #코랩 디렉터리
 
     #image_dir = '/content/TLD_2024/train/images'
