@@ -13,7 +13,7 @@ cd /home/codeWhite/ultralytics/started/
 git status
 
 # Git 추가 (추가 또는 수정된 파일만)
-git add $(basename $SOURCE_FOLDER)
+git add rst/results.csv
 
 # 커밋 메시지 자동 생성
 git commit -m "Auto-commit file $(basename $SOURCE_FOLDER) at $(date)"
