@@ -8,13 +8,13 @@ warnings.filterwarnings("ignore", "You are using `torch.load` with `weights_only
 os.environ["NCCL_P2P_DISABLE"] = "1"
 
 # YOLO 모델 로드
-model = YOLO('C:\ultralytics\tests\runs\detect\rhee\weights\best.pt')
+model = YOLO('/Users/smin/Desktop/ultralytics/tests/runs/detect/best.pt')
 
 # 테스트할 이미지가 있는 디렉토리 경로
-image_dir = r"C:\ultralytics\datasets\TLD_2024\train\tld_classify\class_13\augmented_images"
+image_dir = r"/Users/smin/Desktop/ultralytics/datasets/TLD_2024/test/images"
 
 # 라벨 파일이 있는 경로 (예: 라벨 파일이 다른 디렉토리에 있을 경우)
-label_dir = r"C:\ultralytics\datasets\TLD_2024\train\tld_classify\class_13\augmented_labels"
+label_dir = r"/Users/smin/Desktop/ultralytics/datasets/TLD_2024/test/labels"
 
 
 # 원래 라벨을 불러오는 함수 (YOLO 형식으로 저장되어 있다고 가정)

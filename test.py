@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     img_files.sort() 
 
-    model_filename = p.get_p("trainModel/tld_detection/weights/best.pt")
+    model_filename = p.get_p("yolov10x.pt")
     model = YOLO(model_filename)
 
     for img_filename in img_files:

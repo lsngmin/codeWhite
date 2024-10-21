@@ -1,15 +1,15 @@
 task: detect
 mode: train
 
-model: /home/codeWhite/ultralytics/started/best.pt
-data: /home/codeWhite/ultralytics/started/commons/tld_2024.yaml
+model: /home/codeWhite/ultralytics/started1/best.pt
+data: /home/codeWhite/ultralytics/started1/tld_2024.yaml
 
-project: /home/codeWhite/ultralytics/started/trainModel/
-name: tld_detection3
+project: /home/codeWhite/ultralytics/started1/trainModel/
+name: tld_detection2
 
-epochs: 10
-patience: 2
-batch: 24
+epochs: 50
+patience: 3
+batch: 22
 imgsz: 1280
 device: 0,1
 workers: 48
@@ -23,11 +23,11 @@ cos_lr: False
 close_mosaic: 0
 
 
-conf: 0.57
+conf: 0.69
 iou: 0.65
 
 
-lr0: 0.01
+lr0: 0.001
 lrf: 0.0085
 
 
@@ -35,7 +35,7 @@ momentum: 0.937
 weight_decay: 0.0005  # optimizer weight decay 5e-4
 
 
-warmup_epochs: 0.0  # warmup epochs (fractions ok)
+warmup_epochs: 10.0  # warmup epochs (fractions ok)
 warmup_momentum: 0.9  # warmup initial momentum
 warmup_bias_lr: 0.1  # warmup initial bias lr
 
@@ -47,18 +47,18 @@ dfl: 1.5  # dfl loss gain
 
 label_smoothing: 0.06  # label smoothing (fraction)
 nbs: 64  # nominal batch size
-hsv_h: 0.0  # image HSV-Hue augmentation (fraction)
-hsv_s: 0  # image HSV-Saturation augmentation (fraction)
-hsv_v: 0
-translate: 0 # image translation (+/- fraction)
-scale: 0 # image scale (+/- gain)
-shear: 0  # image shear (+/- deg)
-perspective: 0 # image perspective (+/- fraction), range 0-0.001
+hsv_h: 0.03  # image HSV-Hue augmentation (fraction)
+hsv_s: 0.7  # image HSV-Saturation augmentation (fraction)
+hsv_v: 0.5
+translate: 0.3 # image translation (+/- fraction)
+scale: 0.8 # image scale (+/- gain)
+shear: 0.1  # image shear (+/- deg)
+perspective: 0.1 # image perspective (+/- fraction), range 0-0.001
 #flipud: 0.0  # image flip up-down (probability)
 #fliplr: 0.5  # image flip left-right (probability)
-mosaic: 0  # image mosaic (probability)
-mixup: 0 # image mixup (probability)
-copy_paste: 0  # segment copy-paste (probability)
+mosaic: 0.8  # image mosaic (probability)
+mixup: 0.38  # image mixup (probability)
+copy_paste: 0.2  # segment copy-paste (probability)
 
 
 augment: True
