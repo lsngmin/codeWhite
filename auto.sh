@@ -4,7 +4,7 @@
 SOURCE_FOLDER="/home/codeWhite/ultralytics/started/trainModels/tld_detections_1021/results.csv"
 TARGET_FOLDER="/home/codeWhite/ultralytics/started/rst/results.csv"
 
-# 파일 복사
+git pull origin master
 rm -rf /home/codeWhite/ultralytics/started/rst/results.csv
 cp $SOURCE_FOLDER $TARGET_FOLDER
 # Git 저장소로 이동
@@ -14,7 +14,7 @@ cd /home/codeWhite/ultralytics/started/
 git status
 
 # Git 추가 (추가 또는 수정된 파일만)
-git add /rst/results.csv
+git add . 
 
 # 커밋 메시지 자동 생성
 git commit -m "Auto-commit file $(basename $SOURCE_FOLDER) at $(date)"
