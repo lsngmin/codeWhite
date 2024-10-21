@@ -42,7 +42,7 @@ if __name__ == "__main__":
                 # class_id norm_center_x norm_center_y norm_w norm_h confidence_score
                 f1.write("%d %lf %lf %lf %lf %lf\n"%(cls_id, xywhn[0], xywhn[1],xywhn[2],xywhn[3], cs))
 
-                # xywh = boxes.xywh[obj_idx]
+                # xywh = boxes.xywh[obj_idx]ㅇ
                 # f1.write("%d %lf %lf %lf %lf %lf\n"%(cls_id, cs, xywh[0], xywh[1],xywh[2],xywh[3]))
 
 
