@@ -1,7 +1,7 @@
 *.pt
 __pycache__
 .ipynb_checkpoints
-trainModel
+trainModels
 log
 .idea
 models
