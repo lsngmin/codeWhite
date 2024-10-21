@@ -1,14 +1,14 @@
 task: detect
 mode: train
 
-model: /home/codeWhite/ultralytics/started/best.pt
+model: /home/codeWhite/ultralytics/started/yolov10x.pt
 data: /home/codeWhite/ultralytics/started/commons/tld_2024.yaml
 
-project: /home/codeWhite/ultralytics/started/trainModel/
-name: tld_detection3
+project: /home/codeWhite/ultralytics/started/trainModels/
+name: tld_detections_1021
 
-epochs: 10
-patience: 2
+epochs: 50
+patience: 5
 batch: 20
 imgsz: 1280
 device: 0,1
@@ -23,11 +23,11 @@ cos_lr: False
 close_mosaic: 0
 
 
-conf: 0.57
-iou: 0.65
+conf: 0.5
+iou: 0.55
 
 
-lr0: 0.01
+lr0: 0.001
 lrf: 0.0085
 
 
@@ -37,11 +37,11 @@ weight_decay: 0.0005  # optimizer weight decay 5e-4
 
 warmup_epochs: 0.0  # warmup epochs (fractions ok)
 warmup_momentum: 0.9  # warmup initial momentum
-warmup_bias_lr: 0.1  # warmup initial bias lr
+warmup_bias_lr: 0.01  # warmup initial bias lr
 
 
 box: 8.0 # box loss gain
-cls: 1.3
+cls: 1.5
 dfl: 1.5  # dfl loss gain
 
 
@@ -61,7 +61,7 @@ mixup: 0 # image mixup (probability)
 copy_paste: 0  # segment copy-paste (probability)
 
 
-augment: True
+augment: False
 seed: 0
 deterministic: True
 rect: False
