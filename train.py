@@ -39,7 +39,8 @@ class CustomDataset(torch.utils.data.Dataset):
 model = YOLO(p.get_p("yolov10x.pt"))
 
 # 데이터셋 경로 설정
-img_dir = p.get_p("path/to/your/images")  # 실제 이미지 경로로 변경
+
+img_dir = p.get_p("/home/codeWhite/ultralytics/datasets/train/images")  # 실제 이미지 경로로 변경
 train_dataset = CustomDataset(img_dir=img_dir)
 
 # DataLoader 생성
