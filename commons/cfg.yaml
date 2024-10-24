@@ -47,11 +47,11 @@ dfl: 1.5
 
 label_smoothing: 0.06
 nbs: 64
-hsv_h: 0.0
-hsv_s: 0
-hsv_v: 0
-translate: 0
-scale: 0
+hsv_h: 0.01
+hsv_s: 0.5
+hsv_v: 0.2
+translate: 0.2
+scale: 0.6
 shear: 0
 perspective: 0
 #flipud: 0.0
@@ -80,3 +80,4 @@ save_json: False
 format: torchscript
 workspace: 4
 tracker: botsort.yaml
+
