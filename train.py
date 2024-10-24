@@ -5,7 +5,7 @@ from ultralytics import YOLO
 from torch.utils.data import DataLoader
 from utils import setPath as p
 import cv2
-from testImageAUG import adjust_color
+from augmentation.testImageAUG import adjust_color
 
 os.environ["NCCL_P2P_DISABLE"] = "1"
 
@@ -40,7 +40,7 @@ model = YOLO(p.get_p("yolov10x.pt"))
 
 # 데이터셋 경로 설정
 
-img_dir = p.get_p("/home/codeWhite/ultralytics/datasets/train/images")  # 실제 이미지 경로로 변경
+img_dir = p.get_p("home/codeWhite/ultralytics/datasets/train/images")  # 실제 이미지 경로로 변경
 train_dataset = CustomDataset(img_dir=img_dir)
 
 # DataLoader 생성
