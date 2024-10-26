@@ -71,5 +71,3 @@ def start(input_image_folder, input_label_folder):
     print(f"총 {original_image_count}개의 원본 이미지가 있고, {augmented_image_count}개의 증강된 이미지가 생성되었습니다.")
     print(f"전체 파일 수: {original_image_count + augmented_image_count}")
 
-
-
