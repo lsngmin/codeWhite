@@ -7,8 +7,8 @@ from tqdm import tqdm  # tqdm 라이브러리 임포트
 def sampling_FromTrainDataSet__():
     image_dir = r'/home/codeWhite/ultralytics/datasets/train/images'  # 훈련 이미지 경로
     label_dir = r'/home/codeWhite/ultralytics/datasets/train/labels'  # 훈련 라벨 경로
-    output_image_dir = r'/home/codeWhite/ultralytics/datasets/augtrain/images'  # 샘플링된 검증 이미지 저장 경로
-    output_label_dir = r'/home/codeWhite/ultralytics/datasets/augtrain/labels'  # 샘플링된 검증 라벨 저장 경로
+    output_image_dir = r'/home/codeWhite/ultralytics/datasets/val/images'  # 샘플링된 검증 이미지 저장 경로
+    output_label_dir = r'/home/codeWhite/ultralytics/datasets/val/labels'  # 샘플링된 검증 라벨 저장 경로
     #코랩 디렉터리
 
     #image_dir = '/content/TLD_2024/train/images'
@@ -41,7 +41,7 @@ def sampling_FromTrainDataSet__():
                         class_to_images[class_id].append((img_path, label_path))
 
     # 목표 샘플 수 #######################
-    target_sample_count = 10000  # 검증 데이터셋에 대해 샘플링할 이미지 수
+    target_sample_count = 4000 # 검증 데이터셋에 대해 샘플링할 이미지 수
     total_classes = len(class_to_images)
 
     # 각 클래스에서 필요한 샘플 수 계산
