@@ -10,5 +10,5 @@ lf_ =   [
 
 # 이미지와 라벨 증강 수행
 for j, k in zip(if_, lf_) :
-    c.augment_images_and_labels(j, k)
+    c.start(j, k)
     print("succ!!")
