@@ -50,14 +50,14 @@ nbs: 64
 hsv_h: 0.01
 hsv_s: 0.5
 hsv_v: 0.2
-translate: 0.1
+translate: 0.0
 scale: 0.7
 shear: 0
 perspective: 0
 #flipud: 0.0
 #fliplr: 0.5
 mosaic: 0
-mixup:
+mixup: 0
 copy_paste: 0
 
 

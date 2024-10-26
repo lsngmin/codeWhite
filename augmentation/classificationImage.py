@@ -6,7 +6,7 @@ def start() :
     image_dir = p.get_p("ti")
     label_dir = p.get_p("tl")
 
-    output_dir = p.get_p("datasets") + "train_class"
+    output_dir = p.get_p("datasets") + "train_classes"
     os.makedirs(output_dir, exist_ok=True)
 
     # 이미지 및 라벨 파일 분류 및 클래스별 저장
