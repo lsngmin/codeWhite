@@ -51,15 +51,16 @@ nbs: 64
 #hsv_h: 0.01
 #hsv_s: 0.5
 #hsv_v: 0.2
-#translate: 0.0
-#scale: 0.7
+translate: 0.0625
+scale: 0.65
 #shear: 0.1
 #perspective: 0.1
 #flipud: 0.0
 #fliplr: 0.5
 #mosaic: 0.03
-#mixup: 0.3
-copy_paste: 016
+mixup: 0.001
+copy_paste: 0.165
+degrees: 10
 
 
 augment: True
