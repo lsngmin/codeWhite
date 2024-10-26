@@ -1,14 +1,14 @@
 task: detect
 mode: train
 
-model: /home/codeWhite/ultralytics/started/trainModels/tld_detections_1021/weights/best.pt
+model: /home/codeWhite/ultralytics/started/best.pt
 data: /home/codeWhite/ultralytics/started/commons/tld_2024.yaml
 
 project: /home/codeWhite/ultralytics/started/trainModels/
-name: tld_detections_1026
+name: tld_detections_1026_2
 
-epochs: 10
-patience: 1
+epochs: 40
+patience: 3
 batch: 20
 imgsz: 1280
 device: 0,1
@@ -20,7 +20,7 @@ val: True
 optimizer: AdamW
 freeze: 0
 cos_lr: False
-close_mosaic: 0
+close_mosaic: 5
 fraction: 1.0
 
 conf: 0.5
@@ -47,21 +47,22 @@ dfl: 1.5
 
 label_smoothing: 0.06
 nbs: 64
-hsv_h: 0.01
-hsv_s: 0.5
-hsv_v: 0.2
-translate: 0.0
-scale: 0.7
-shear: 0
-perspective: 0
+
+#hsv_h: 0.01
+#hsv_s: 0.5
+#hsv_v: 0.2
+#translate: 0.0
+#scale: 0.7
+#shear: 0.1
+#perspective: 0.1
 #flipud: 0.0
 #fliplr: 0.5
-mosaic: 0
-mixup: 0
-copy_paste: 0
+#mosaic: 0.03
+#mixup: 0.3
+copy_paste: 016
 
 
-augment: False
+augment: True
 seed: 0
 deterministic: True
 rect: False

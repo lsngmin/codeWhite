@@ -9,16 +9,15 @@ import random
 # 증강 파이프라인 설정
 def get_augmentation_pipeline():
     return A.Compose([
-        A.RandomBrightnessContrast(brightness_limit=(-0.3, 0), contrast_limit=(-0.2, 0.2), p=0.5),  # 저조도 시뮬레이션
-        A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-50, 0), p=0.5),  # 명도 낮추기
-        A.RandomGamma(gamma_limit=(60, 100), p=0.5),  # 감마 낮추기
+        A.RandomBrightnessContrast(brightness_limit=(-0.3, 0), contrast_limit=(-0.2, 0.2), p=0.5),
+        A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-50, 0), p=0.5),
+        A.RandomGamma(gamma_limit=(60, 100), p=0.5),
         A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
         A.MotionBlur(p=0.3),
-        A.GridDistortion(p=0.2),
-        A.RandomScale(scale_limit=0.8, p=0.5),
-        A.HorizontalFlip(p=0.5),
-        A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.15, rotate_limit=10, p=0.5),
-    ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))  # 바운딩 박스 파라미터 추가
+        A.GridDistortion(p=0.05),
+        A.HorizontalFlip(p=0.19),  # 좌우 반전
+        A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.15, rotate_limit=10, p=0.5)
+    ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
 
 # 증강을 적용하는 함수

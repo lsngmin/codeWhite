@@ -1,10 +1,10 @@
 import class13aug as c
 # 증강을 수행할 폴더 경로
 if_ = [
-    "/home/codeWhite/ultralytics/datasets/train_class/class_13/images",
+    "/home/codeWhite/ultralytics/datasets/train/images",
 ]
 lf_ =   [ 
-	"/home/codeWhite/ultralytics/datasets/train_class/class_13/labels",
+	"/home/codeWhite/ultralytics/datasets/train/labels",
 ]
 
 
