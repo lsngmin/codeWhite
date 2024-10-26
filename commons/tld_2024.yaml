@@ -1,4 +1,4 @@
-train: /home/codeWhite/ultralytics/datasets/train/images  # 학습 데이터 이미지 경로
+train: /home/codeWhite/ultralytics/datasets/train_class/class_13/images  # 학습 데이터 이미지 경로
 val: /home/codeWhite/ultralytics/datasets/val/images     # 검증 데이터 이미지 경로
 
 nc: 14  # 클래스 수 (14개 클래스)
