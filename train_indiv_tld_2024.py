@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore", "You are using `torch.load` with `weights_only
 os.environ["NCCL_P2P_DISABLE"] = "1"
 
 # YOLO 모델 로드
-model = YOLO('/Users/smin/Desktop/ultralytics/tests/runs/detect/best.pt')
+model = YOLO('/Users/smin/Desktop/ultralytics/started/trainModels/tld_detections_1021/weights/best.pt')
 
 # 테스트할 이미지가 있는 디렉토리 경로
 image_dir = r"/Users/smin/Desktop/ultralytics/datasets/TLD_2024/test/images"
