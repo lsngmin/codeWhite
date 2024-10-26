@@ -5,7 +5,7 @@ def start() :
     image_dir = '/home/codeWhite/ultralytics/datasets/train/images'
     label_dir = '/home/codeWhite/ultralytics/datasets/train/labels'
 
-    output_dir = p.get_p("datasets") + "train_classes"
+    output_dir = "/home/codeWhite/ultralytics/datasets/train_classes"
     os.makedirs(output_dir, exist_ok=True)
 
     # 이미지 및 라벨 파일 분류 및 클래스별 저장
