@@ -6,6 +6,10 @@ import numpy as np
 import uuid  # UUID 모듈 추가
 import random
 
+# 바운딩 박스 좌표를 [0, 1] 범위로 클리핑하는 함수
+def clip_bboxes(bboxes):
+    return [[min(1.0, max(0.0, x)) for x in bbox] for bbox in bboxes]
+
 # 증강 파이프라인 설정
 def get_augmentation_pipeline():
     return A.Compose([
@@ -18,7 +22,6 @@ def get_augmentation_pipeline():
         A.HorizontalFlip(p=0.19),  # 좌우 반전
         A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.15, rotate_limit=10, p=0.5)
     ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
-
 
 # 증강을 적용하는 함수
 def start(input_image_folder, input_label_folder):
@@ -51,8 +54,15 @@ def start(input_image_folder, input_label_folder):
                     bboxes.append([x_center, y_center, width, height])
                     class_labels.append(int(class_id))
 
+        # 바운딩 박스를 [0, 1] 범위로 클리핑
+        bboxes = clip_bboxes(bboxes)
+
         # 이미지 및 바운딩 박스 증강 적용
-        augmented = augmentations(image=image, bboxes=bboxes, class_labels=class_labels)
+        try:
+            augmented = augmentations(image=image, bboxes=bboxes, class_labels=class_labels)
+        except ValueError as e:
+            print(f"Error augmenting {img_path}: {e}")
+            continue
 
         # 고유한 파일명 만들기 (중복 방지, UUID 사용)
         unique_filename = f"aug_{uuid.uuid4().hex}.jpg"  # UUID를 파일명으로 사용
@@ -73,6 +83,3 @@ def start(input_image_folder, input_label_folder):
     # 최종 출력
     print(f"총 {original_image_count}개의 원본 이미지가 있고, {augmented_image_count}개의 증강된 이미지가 생성되었습니다.")
     print(f"전체 파일 수: {original_image_count + augmented_image_count}")
-
-
-
