@@ -1,10 +1,10 @@
 import os
 import shutil
-from ..utils import setPath
-def start(p, j) :
+from ..utils import setPath as p
+def start() :
     # 이미지 및 라벨 경로 설정
-    image_dir = p
-    label_dir = j
+    image_dir = p.get_p("ti")
+    label_dir = p.get_p("tl")
 
     output_dir = p.get_p("datasets") + "train_class"
     os.makedirs(output_dir, exist_ok=True)
