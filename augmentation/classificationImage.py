@@ -1,10 +1,9 @@
 import os
 import shutil
-from ..utils import setPath as p
 def start() :
     # 이미지 및 라벨 경로 설정
-    image_dir = p.get_p("ti")
-    label_dir = p.get_p("tl")
+    image_dir = '/home/codeWhite/ultralytics/datasets/train/images'
+    label_dir = '/home/codeWhite/ultralytics/datasets/train/labels'
 
     output_dir = p.get_p("datasets") + "train_classes"
     os.makedirs(output_dir, exist_ok=True)
@@ -54,3 +53,5 @@ def start() :
             print(f'Class {class_folder} contains {num_images} images.')
 
     print(f'Total number of images: {total_images}')
+
+start()
