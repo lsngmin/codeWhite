@@ -13,11 +13,8 @@ def get_augmentation_pipeline():
         A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-50, 0), p=0.5),
         A.RandomGamma(gamma_limit=(60, 100), p=0.5),
         A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
-        A.MotionBlur(p=0.3),
-        A.GridDistortion(p=0.05),
-        #A.HorizontalFlip(p=0.19),  # 좌우 반전
-        #A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.15, rotate_limit=10, p=0.5)
-    ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
+        A.MotionBlur(p=0.3)
+    ])
 
 
 # 증강을 적용하는 함수
