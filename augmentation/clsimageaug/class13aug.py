@@ -14,7 +14,7 @@ def get_augmentation_pipeline():
         A.RandomGamma(gamma_limit=(60, 100), p=0.5),
         A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
         A.MotionBlur(p=0.3),
-    ], bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
+    ])  # bbox_params 제거
 
 
 # 증강을 적용하는 함수
@@ -48,8 +48,8 @@ def start(input_image_folder, input_label_folder):
                     bboxes.append([x_center, y_center, width, height])
                     class_labels.append(int(class_id))
 
-        # 이미지 및 바운딩 박스 증강 적용
-        augmented = augmentations(image=image, bboxes=bboxes, class_labels=class_labels)
+        # 이미지 증강 적용
+        augmented = augmentations(image=image)
 
         # 고유한 파일명 만들기 (중복 방지, UUID 사용)
         unique_filename = f"aug_{uuid.uuid4().hex}.jpg"  # UUID를 파일명으로 사용
@@ -58,10 +58,10 @@ def start(input_image_folder, input_label_folder):
         # 증강된 이미지 저장
         cv2.imwrite(input_img_path, augmented['image'])
 
-        # 증강된 라벨 저장
+        # 라벨 파일 복사 (Bounding Box 좌표 변경이 필요 없으므로 그대로 저장)
         input_label_path = os.path.join(input_label_folder, unique_filename.replace(".jpg", ".txt"))
         with open(input_label_path, 'w') as output_label_file:
-            for bbox, class_id in zip(augmented['bboxes'], class_labels):
+            for bbox, class_id in zip(bboxes, class_labels):
                 x_center, y_center, width, height = bbox
                 output_label_file.write(f"{class_id} {x_center} {y_center} {width} {height}\n")
 
@@ -70,4 +70,3 @@ def start(input_image_folder, input_label_folder):
     # 최종 출력
     print(f"총 {original_image_count}개의 원본 이미지가 있고, {augmented_image_count}개의 증강된 이미지가 생성되었습니다.")
     print(f"전체 파일 수: {original_image_count + augmented_image_count}")
-
