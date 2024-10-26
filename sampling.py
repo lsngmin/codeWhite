@@ -41,7 +41,7 @@ def sampling_FromTrainDataSet__():
                         class_to_images[class_id].append((img_path, label_path))
 
     # 목표 샘플 수 #######################
-    target_sample_count = 8000  # 검증 데이터셋에 대해 샘플링할 이미지 수
+    target_sample_count = 10000  # 검증 데이터셋에 대해 샘플링할 이미지 수
     total_classes = len(class_to_images)
 
     # 각 클래스에서 필요한 샘플 수 계산
