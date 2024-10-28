@@ -6,15 +6,26 @@ import numpy as np
 import uuid  # UUID 모듈 추가
 import random
 
+
+
 # 증강 파이프라인 설정
 def get_augmentation_pipeline():
     return A.Compose([
-        A.RandomBrightnessContrast(brightness_limit=(-0.3, 0), contrast_limit=(-0.2, 0.2), p=0.5),
+        A.RandomBrightnessContrast(brightness_limit=(-0.4, 0.1), contrast_limit=(-0.3, 0.1), p=0.5),
         A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-50, 0), p=0.5),
-        A.RandomGamma(gamma_limit=(60, 100), p=0.5),
-        A.GaussNoise(var_limit=(10.0, 50.0), p=0.3),
+        A.RandomGamma(gamma_limit=(60, 120), p=0.5),
+        A.GaussNoise(var_limit=(5.0, 50.0), p=0.3),
         A.MotionBlur(p=0.3),
+        A.Rotate(limit=10, p=0.5),
+
+
     ])  # bbox_params 제거
+
+
+
+
+
+
 
 
 # 증강을 적용하는 함수
