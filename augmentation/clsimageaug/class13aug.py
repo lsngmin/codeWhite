@@ -9,27 +9,22 @@ import random
 
 
 # 증강 파이프라인 설정
-def get_augmentation_pipeline(image=None):
-    # 모든 이미지에 적용할 기본 증강 설정
-    augmentations = [
-        A.RandomBrightnessContrast(brightness_limit=(-0.3, 0.1), contrast_limit=(-0.2, 0.2), p=0.5),
-        A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-30, 10), p=0.5),
-        A.RandomGamma(gamma_limit=(70, 100), p=0.4),
-        A.GaussNoise(var_limit=(5.0, 30.0), p=0.2),
-        A.MotionBlur(blur_limit=(3, 5), p=0.1),
-    ]
-    
-    # 이미지의 평균 밝기 확인
-    if image is not None:
-        gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        mean_brightness = cv2.mean(gray_image)[0]
-        
-        # 평균 밝기가 낮은 경우 추가 밝기 조정
-        if mean_brightness < 80:
-            augmentations.append(A.RandomBrightnessContrast(brightness_limit=(0.3, 0.5), contrast_limit=(-0.3, 0), p=1))
+def get_augmentation_pipeline():
+    return A.Compose([
+        A.RandomBrightnessContrast(brightness_limit=(-0.4, 0.1), contrast_limit=(-0.3, 0.1), p=0.5),
+        A.HueSaturationValue(hue_shift_limit=0, sat_shift_limit=0, val_shift_limit=(-50, 0), p=0.5),
+        A.RandomGamma(gamma_limit=(60, 120), p=0.5),
+        A.GaussNoise(var_limit=(5.0, 50.0), p=0.3),
+        A.MotionBlur(p=0.3),
+        A.Rotate(limit=10, p=0.5),
 
-    # 증강 파이프라인 반환
-    return A.Compose(augmentations)
+
+    ])  # bbox_params 제거
+
+
+
+
+
 
 
 
@@ -37,6 +32,7 @@ def get_augmentation_pipeline(image=None):
 def start(input_image_folder, input_label_folder):
     # 증강 파이프라인 생성
     random.seed()
+    augmentations = get_augmentation_pipeline()
 
     # 이미지 경로와 라벨 경로 가져오기
     image_paths = glob(os.path.join(input_image_folder, "*.jpg"))
@@ -64,7 +60,6 @@ def start(input_image_folder, input_label_folder):
                     class_labels.append(int(class_id))
 
         # 이미지 증강 적용
-        augmentations = get_augmentation_pipeline(image=image)
         augmented = augmentations(image=image)
 
         # 고유한 파일명 만들기 (중복 방지, UUID 사용)
